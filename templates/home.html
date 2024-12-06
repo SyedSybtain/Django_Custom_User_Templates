@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom User</title>
+</head>
+<body>
+
+    The Custom User Test App
+    <hr>
+    {% block content %}
+    {% if user.is_authenticated %}
+    <form method="POST">
+        {% csrf_token %}
+        <button>Logout</button>
+    </form>
+    {% else %}
+    <a href="{% url 'login' %}">Existing User / Login </a>
+    <br>
+    <a href="{% url 'register' %}"> New User / Register</a>
+    <br>
+    <a href="{% url 'password_change' %}"> Change Password </a>
+    {% endif %}
+    {% endblock %}
+</body>
+</html>
